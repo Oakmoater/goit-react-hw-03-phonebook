@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Contact = ({id, name, number, deleter}) => {
     return (
-    <li id={id}>
+    <li key={id}>
         <span>{name}: {number}</span>
         <button type="button" id={id} onClick={() => (deleter(id))}>Delete</button>
     </li>

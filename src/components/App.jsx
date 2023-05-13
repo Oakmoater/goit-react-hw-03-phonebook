@@ -10,6 +10,19 @@ export class App extends Component {
     filter: ''
   }
 
+  componentDidMount() {
+    const localData = localStorage.getItem('contacts')
+    if (localData) {
+      this.setState({contacts: JSON.parse(localData)})
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+  }
+}
+
   addContact = (e) => {
     e.preventDefault();
     const { name, number } = e.target.elements;
